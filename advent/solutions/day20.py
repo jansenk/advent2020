@@ -8,6 +8,15 @@ class Tile:
 	
 	def parse_edges(self):
 		pass
+	(top, right, down, left)
+	ten spaces, read ltr or utd
+
+	def get_permutations(self)
+
+	def does_edge_match(top=None, bottom=None, left=None, right=None):
+		assert any([top, bottom, left, right])
+		perms = self.get_permutations()
+
 
 import re
 tile_p = re.compile(r'Tile (?P<tile_id>\d*?):')
@@ -44,7 +53,7 @@ def solve_tiles(filename):
 	all_tiles = list(tiles.keys())
 	grid_size = int(sqrt(len(all_tiles)))
 	assert len(all_tiles) % grid_size == 0
-	print(len(tiles))
+	state_stack = 
 
 
 solve_tiles('20.1.txt')
