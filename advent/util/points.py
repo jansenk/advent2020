@@ -8,7 +8,16 @@ def move(p1, p2):
 		p1.x + p2.x,
 		p1.y + p2.y,
 	)
-	
+
+def moven(p, d, n):
+	return move(
+		Point(d.x * n, d.y * n),
+		p
+	)
+
+def recenter(p0, p1):
+	return Point(p1.x - p0.x, p1.y - p0.y)
+
 def move3d(p1, p2):
 	return Point3D(
 		p1.x + p2.x,
@@ -58,6 +67,22 @@ class Direction:
 			return Direction.LEFT
 		raise NotImplementedError()
 
+	_clockwise_cardinal = [UP, RIGHT, DOWN, LEFT]
+	@staticmethod
+	def rotate_cardinal(direction, clockwise_steps):
+		start = Direction._clockwise_cardinal.index(direction)
+		return Direction._clockwise_cardinal[(start + clockwise_steps) % 4]
+	
+	@staticmethod
+	def name(d):
+		if d == Direction.UP:
+			return 'UP'
+		if d == Direction.DOWN:
+			return 'DOWN'
+		if d == Direction.LEFT:
+			return 'LEFT'
+		if d == Direction.RIGHT:
+			return 'RIGHT'
 
 def surrounding_points(p):
 	return [move(d, p) for d in Direction.ALL_DIRECTIONS]
